@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus Passenger Exporter Server
+
+[Service]
+ExecStart=/opt/prometheus/passenger_exporter_nginx \
+    -passenger.pid-file {{ prometheus_passenger_nginx_pid_path }} \
+    -web.listen-address :{{ prometheus_passenger_port }}
+KillMode=mixed
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-passenger-exporter
+      prometheus_passenger_nginx_pid_path: /tmp/nginx.pid
+      prometheus_passenger_port: 9149

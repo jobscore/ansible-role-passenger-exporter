@@ -1,0 +1,31 @@
+---
+- name: Ensure prometheus dir exists
+  become: true
+  file:
+    path: /opt/prometheus
+    recurse: true
+    state: directory
+
+- name: Ensure passenger_exporter is downloaded
+  become: true
+  get_url:
+    url: https://github.com/jobscore/passenger_exporter/releases/download/0.5.0/passenger_exporter_nginx
+    dest: "/opt/prometheus/passenger_exporter_nginx"
+    mode: 0755
+
+- name: Ensure passenger_exporter service is configured
+  become: true
+  template:
+    dest: /etc/systemd/system/prometheus-passenger-exporter.service
+    src: passenger_exporter-service.j2
+  notify:
+    - restart prometheus_passenger
+
+- name: Ensure passenger_exporter service is enabled
+  become: true
+  systemd:
+    daemon_reload: true
+    enabled: true
+    name: prometheus-passenger-exporter.service
+  notify:
+    - restart prometheus_passenger
