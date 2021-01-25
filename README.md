@@ -1,22 +1,21 @@
-Role Name
+Prometheus Passenger Exporter role
 =========
 
-A brief description of the role goes here.
+An Ansible role for installing Prometheus Passenger Exporter on a Ubuntu box.
+This role is based on https://github.com/jobscore/passenger_exporter
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Passenger must be already installed.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+```
+prometheus_passenger_nginx_pid_path: The path of nginx/passenger PID file. Default to /run/nginx.pid
+prometheus_passenger_port: The port in which the exporter will expose the metrics. Default to 9149
+```
 
 Example Playbook
 ----------------
@@ -25,14 +24,16 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+        - role: jobscore.
+          prometheus_passenger_nginx_pid_path: /tmp/nginx.pid
+          prometheus_passenger_port: 9999
 
 License
 -------
 
-BSD
+[MIT](/LICENSE)
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role was created by [GlauberrBatista](https://github.com/GlauberrBatista) while working for [JobScore Inc](https://jobscore.com).
