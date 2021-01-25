@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: prometheus_passenger_exporter
   author: Glauber Cassiano Batista
   description: An Ansible role for installing Prometheus Passenger Exporter on a Ubuntu box
   company: JobScore
