@@ -1,8 +1,8 @@
 ---
 language: python
 
-# Use the new container infrastructure
-sudo: false
+os: linux
+dist: bionic
 
 # Install ansible
 addons:
