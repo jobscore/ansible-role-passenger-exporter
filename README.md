@@ -1,3 +1,4 @@
+![Build Status](https://travis-ci.org/jobscore/ansible-role-passenger-exporter.svg?branch=master)
 Prometheus Passenger Exporter role
 =========
 
