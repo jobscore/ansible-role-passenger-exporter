@@ -26,7 +26,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-        - role: jobscore.
+        - role: jobscore.prometheus_passenger_exporter
           prometheus_passenger_nginx_pid_path: /tmp/nginx.pid
           prometheus_passenger_port: 9999
 
