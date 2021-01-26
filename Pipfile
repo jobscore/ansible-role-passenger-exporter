@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 ansible = "*"
 molecule-docker = "*"
-testinfra = "*"
+pytest-testinfra = "*"
 'molecule[docker]' = "*"
 
 [requires]
