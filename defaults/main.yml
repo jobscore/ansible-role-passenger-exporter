@@ -1,3 +1,4 @@
 ---
 prometheus_passenger_nginx_pid_path: /run/nginx.pid
 prometheus_passenger_port: 9149
+prometheus_passenger_version: 0.5.1

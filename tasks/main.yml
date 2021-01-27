@@ -9,9 +9,25 @@
 - name: Ensure passenger_exporter is downloaded
   become: true
   get_url:
-    url: https://github.com/jobscore/passenger_exporter/releases/download/0.5.0/passenger_exporter_nginx
-    dest: "/opt/prometheus/passenger_exporter_nginx"
+    url: https://github.com/jobscore/passenger_exporter/releases/download/{{prometheus_passenger_version}}/passenger_exporter_nginx
+    dest: /tmp/passenger_exporter_nginx
     mode: 0755
+  changed_when: false
+
+- name: Ensure passenger_exporter is placed in the correct folder
+  become: true
+  copy:
+    remote_src: true
+    src: /tmp/passenger_exporter_nginx
+    dest: /opt/prometheus/passenger_exporter_nginx
+    mode: preserve
+
+- name: Ensure the tmp file is removed
+  become: true
+  file:
+    state: absent
+    path: /tmp/passenger_exporter_nginx
+  changed_when: false
 
 - name: Ensure passenger_exporter service is configured
   become: true
