@@ -17,6 +17,7 @@ Role Variables
 ```
 prometheus_passenger_nginx_pid_path: The path of nginx/passenger PID file. Default to /run/nginx.pid
 prometheus_passenger_port: The port in which the exporter will expose the metrics. Default to 9149
+prometheus_passenger_registry_dir: The location of `passenger_instance_registry_dir` setup in passenger configuration file. Default to /tmp
 ```
 
 Example Playbook
@@ -29,6 +30,7 @@ Including an example of how to use your role (for instance, with variables passe
         - role: jobscore.prometheus_passenger_exporter
           prometheus_passenger_nginx_pid_path: /tmp/nginx.pid
           prometheus_passenger_port: 9999
+          prometheus_passenger_registry_dir: /var/run/passenger
 
 License
 -------

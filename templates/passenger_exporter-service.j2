@@ -2,6 +2,9 @@
 Description=Prometheus Passenger Exporter Server
 
 [Service]
+{% if prometheus_passenger_registry_dir %}
+Environment=PASSENGER_INSTANCE_REGISTRY_DIR={{prometheus_passenger_registry_dir}}
+{% endif %}
 ExecStart=/opt/prometheus/passenger_exporter_nginx \
     -passenger.pid-file {{ prometheus_passenger_nginx_pid_path }} \
     -web.listen-address :{{ prometheus_passenger_port }}
